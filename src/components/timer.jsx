@@ -26,6 +26,8 @@ export default class timer extends Component {
     constructor(props){
         super(props);
 
+        document.title = 'Study Planner';
+
         this.state = {
             minutes : DEFAULT_MINUTES,
             seconds : DEFAULT_SECONDS,

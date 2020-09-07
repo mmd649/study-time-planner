@@ -2,6 +2,13 @@ import React, { Component } from 'react';
 import './log.css'
 
 export default class log extends Component {
+
+    constructor(props){
+        super(props);
+
+        document.title = 'Logs';
+    }
+
     render() {
         return (
             <div className='log-container'>
