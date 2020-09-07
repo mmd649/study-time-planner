@@ -1,0 +1,28 @@
+.log-container{
+    width: 50%;
+    margin: 0 auto;
+}
+
+.log-items{
+    margin-top: 20px;
+}
+
+.log-header{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 15px;
+}
+
+.log-header li{
+    list-style: none;
+    font-weight: 600;
+}
+
+.log-details{
+    display: flex;
+    justify-content: space-between;
+}
+
+.log-details li{
+    list-style: none;
+}

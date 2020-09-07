@@ -1,0 +1,58 @@
+.timer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.timer-mode{
+    margin-top: 30px;
+    list-style: none;
+}
+
+.timer-mode li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.timer-mode li button{
+    padding: 10px;
+    background-color: #2c2c2c;
+    color: #ce9e62;
+    font-weight: 600;
+    border-radius: 5px;
+}
+
+.timer-mode li button:hover{
+    cursor: pointer;
+    transition: 0.4s;
+    color: #ff8c00;
+}
+
+.timer {
+    font-size: 80px;
+    margin-top: 50px;
+}
+
+.timer-controls ul{
+    list-style: none;
+}
+
+.timer-controls ul li {
+    display: inline-block;
+    margin: 20px 30px;
+}
+
+.timer-controls ul li button {
+    border: none;
+    outline: none;
+    font-size: 20px;
+    background-color: white;
+    border-radius: 12.5px;
+    padding: 10px;
+}
+
+.timer-controls ul li button:hover {
+    cursor: pointer;
+    color: #ce9e62;;
+    transition: 0.3s;
+}
