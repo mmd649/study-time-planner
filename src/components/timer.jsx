@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Moment from 'moment';
+import Cookies from 'js-cookie';
 import './timer.css';
 
 const DEFAULT_MINUTES = 25;
@@ -40,8 +42,6 @@ export default class timer extends Component {
 
         const TOTAL_SECONDS = (this.state.minutes * 60) + this.state.seconds;
 
-        console.log(TOTAL_SECONDS);
-
         let counter = 0;
 
         this.state.intervalID = setInterval(() =>{
@@ -58,7 +58,6 @@ export default class timer extends Component {
 
                 this.setState({seconds: this.state.seconds - 1});
             }
-            console.log(counter);
 
             counter += 1;
 
@@ -69,6 +68,38 @@ export default class timer extends Component {
 
         }, 1000);
         
+        const currentDate = Moment();
+
+        let duration = 0;
+
+        if(this.state.mode === 'study'){
+            duration = 25;
+        } else if(this.state.mode === 'short_break'){
+            duration = 5;
+        } else if(this.state.mode === 'long_break'){
+            duration = 10;
+        }
+
+        console.log(currentDate.format('dddd, MMMM Do YYYY - HH:mm:ss'))
+
+        const logDetail = {
+            "Mode"  : this.state.mode,
+            "Start" : currentDate.format('dddd, MMMM Do YYYY - HH:mm:ss'),
+            "End"   : currentDate.add(duration, 'minutes').format('dddd, MMMM Do YYYY - HH:mm:ss')
+        }
+
+        // Cookies.set('log1', 'first log');
+        // Cookies.set('log2', 'second log');
+        console.log(Cookies.get());
+        console.log(Cookies.get() == {});
+
+        // if(document.cookie = null){
+        //     document.cookie = "log1=" + JSON.stringify(logDetail);
+        // } else {
+        //     const logCount = document.cookie.split('; ').length;
+        //     document.cookie = "log" + (logCount + 1) + "=" + JSON.stringify(logDetail);
+        // }
+
     }
 
     pauseTimer(){
@@ -88,15 +119,18 @@ export default class timer extends Component {
         clearInterval(this.state.intervalID);
     }
 
+    studyTime(){
+        this.setState({minutes: DEFAULT_MINUTES, seconds: DEFAULT_SECONDS, mode: 'study'})
+        clearInterval(this.state.intervalID);
+    }
+
     shortBreak(){
-        this.setState({mode: 'short_break'});
-        this.setState({minutes: SHORT_BREAK, seconds: DEFAULT_SECONDS})
+        this.setState({minutes: SHORT_BREAK, seconds: DEFAULT_SECONDS, mode: 'short_break'})
         clearInterval(this.state.intervalID);
     }
 
     longBreak(){
-        this.setState({mode: 'long_break'});
-        this.setState({minutes: LONG_BREAK, seconds: DEFAULT_SECONDS})
+        this.setState({minutes: LONG_BREAK, seconds: DEFAULT_SECONDS, mode: 'long_break'})
         clearInterval(this.state.intervalID);
     }
 
@@ -106,7 +140,7 @@ export default class timer extends Component {
 
                 <div>
                     <ul className='timer-mode'>
-                        <li><button onClick = { () => this.setState({minutes: DEFAULT_MINUTES, seconds: DEFAULT_SECONDS, mode: 'study'}) }>Study</button></li>
+                        <li><button onClick = { () => this.studyTime() }>Study</button></li>
                         <li><button onClick = { () => this.shortBreak() }>Short Break</button></li>
                         <li><button onClick = { () => this.longBreak() }>Long Break</button></li>
                     </ul>

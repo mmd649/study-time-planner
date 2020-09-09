@@ -6,7 +6,7 @@ export default class navbar extends Component {
     render() {
         return (
             <header>
-                <Link to='/'><a className='name'>Study Planner</a></Link>
+                <Link to='/'><p className='name'>Study Planner</p></Link>
                 <nav>
                     <ul className='nav-links' href='#'>
                         <Link to='/log'>
