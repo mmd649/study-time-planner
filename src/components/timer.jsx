@@ -62,7 +62,6 @@ export default class timer extends Component {
             counter += 1;
 
             if(counter === TOTAL_SECONDS) {
-                console.log('END');
                 clearInterval(this.state.intervalID);
             }
 
@@ -80,25 +79,21 @@ export default class timer extends Component {
             duration = 10;
         }
 
-        console.log(currentDate.format('dddd, MMMM Do YYYY - HH:mm:ss'))
-
+        //Logs format
         const logDetail = {
             "Mode"  : this.state.mode,
             "Start" : currentDate.format('dddd, MMMM Do YYYY - HH:mm:ss'),
             "End"   : currentDate.add(duration, 'minutes').format('dddd, MMMM Do YYYY - HH:mm:ss')
         }
 
-        // Cookies.set('log1', 'first log');
-        // Cookies.set('log2', 'second log');
-        console.log(Cookies.get());
-        console.log(Cookies.get() == {});
-
-        // if(document.cookie = null){
-        //     document.cookie = "log1=" + JSON.stringify(logDetail);
-        // } else {
-        //     const logCount = document.cookie.split('; ').length;
-        //     document.cookie = "log" + (logCount + 1) + "=" + JSON.stringify(logDetail);
-        // }
+        //Cookies - Used to store logs
+        if(Cookies.get('counter')){
+            Cookies.set('counter', parseInt(Cookies.get('counter')) + 1, {expires: 10});
+            Cookies.set(`log${Cookies.get('counter')}`, logDetail, {expires: 10});
+        } else {
+            Cookies.set('counter', 1, {expires: 10})
+            Cookies.set(`log${Cookies.get('counter')}`, logDetail, {expires: 10});
+        }
 
     }
 
