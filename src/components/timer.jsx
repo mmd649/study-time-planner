@@ -63,10 +63,15 @@ export default class timer extends Component {
 
             if(counter === TOTAL_SECONDS) {
                 clearInterval(this.state.intervalID);
+                this.setCookie();
             }
 
         }, 1000);
-        
+
+    }
+
+    setCookie(){
+
         const currentDate = Moment();
 
         let duration = 0;
@@ -87,6 +92,7 @@ export default class timer extends Component {
         }
 
         //Cookies - Used to store logs
+        //Has an expiration of 10 days
         if(Cookies.get('counter')){
             Cookies.set('counter', parseInt(Cookies.get('counter')) + 1, {expires: 10});
             Cookies.set(`log${Cookies.get('counter')}`, logDetail, {expires: 10});
@@ -94,7 +100,6 @@ export default class timer extends Component {
             Cookies.set('counter', 1, {expires: 10})
             Cookies.set(`log${Cookies.get('counter')}`, logDetail, {expires: 10});
         }
-
     }
 
     pauseTimer(){

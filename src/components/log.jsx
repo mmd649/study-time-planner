@@ -21,20 +21,33 @@ import './log.css'
 //     }
 // ];
 
-class LogRow extends Component{
-
-    render(){
-        return(
+//Table Header Component
+const LogHeader = () => {
+    return(
+        <thead>
             <tr>
-                <td>{this.props.sessionType}</td>
-                <td>{this.props.sessionStart}</td>
-                <td>{this.props.sessionEnd}</td>
-                <td><button className='delete-log-button' onClick = { () => {this.props.deleteLog(this.props.id)} }>X</button></td>
-             </tr>
-        )
-    }
+                <th>Session Type</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th></th>
+            </tr> 
+        </thead>
+    )
 }
 
+//Table Content Component
+const LogRow = (props) => {
+    return(
+        <tr>
+            <td>{props.sessionType}</td>
+            <td>{props.sessionStart}</td>
+            <td>{props.sessionEnd}</td>
+            <td><button className='delete-log-button' onClick = { () => {props.deleteLog(props.id)} }>X</button></td>
+        </tr>)
+}
+
+// Log Table Component
+// Dispays Logs that is stored locally using cookies.
 export default class LogsTable extends Component {
 
     constructor(props){
@@ -60,6 +73,8 @@ export default class LogsTable extends Component {
             }
         });
 
+        this.deleteLog = this.deleteLog.bind(this);
+
     }
 
     deleteLog(COOKIE_KEY){
@@ -75,19 +90,11 @@ export default class LogsTable extends Component {
     }
 
     render() {
-
         return (
             <div className='log-container'>
                 <table className='log-table'>
                     {/* <caption>Past Sessions</caption> */}
-                    <thead>
-                        <tr>
-                            <th>Session Type</th>
-                            <th>Start Time</th>
-                            <th>End Time</th>
-                            <th></th>
-                        </tr> 
-                    </thead>
+                    <LogHeader/ >
                     <tbody>
                         {this.state.LOGS.map((post, index) => (
                             <LogRow
@@ -95,8 +102,7 @@ export default class LogsTable extends Component {
                             sessionType={post.Mode}
                             sessionStart={post.Start}
                             sessionEnd={post.End}
-                            //Very important to bind 'this' here because when called, it will refer to this  parent component and not the child component.
-                            deleteLog = {this.deleteLog.bind(this)} />
+                            deleteLog = {this.deleteLog} />
                         ))}
                     </tbody>
                 </table>
