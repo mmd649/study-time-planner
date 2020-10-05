@@ -2,11 +2,14 @@ import React, { Component } from 'react';
 import Moment from 'moment';
 import Cookies from 'js-cookie';
 import './timer.css';
+import ALARM_SOUND from '../resources/alarm.mp3';
 
 const DEFAULT_MINUTES = 25;
 const DEFAULT_SECONDS = 0;
 const SHORT_BREAK = 5; //Minutes
 const LONG_BREAK = 10; //Minutes
+
+const ALARM = new Audio(ALARM_SOUND);
 
 /*
     The Pomodoro Technique is a time management method developed by Francesco Cirillo in the late 1980s. 
@@ -38,6 +41,7 @@ export default class timer extends Component {
         }
     }
 
+    // Start the timer. Will continue to run until finished or stopped by the user.
     startTimer(){
 
         const TOTAL_SECONDS = (this.state.minutes * 60) + this.state.seconds;
@@ -61,13 +65,14 @@ export default class timer extends Component {
 
             counter += 1;
 
+            //Set the cookie and play the alarm sound once the full duration of the timer has been reached.
             if(counter === TOTAL_SECONDS) {
                 clearInterval(this.state.intervalID);
                 this.setCookie();
+                ALARM.play();
             }
 
         }, 1000);
-
     }
 
     setCookie(){

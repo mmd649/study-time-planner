@@ -33,6 +33,10 @@ a:hover {
 }
 
 @media (max-width: 768px) {
+
+    header{
+        height: 80px;
+    }
     
     .name {
         font-size: 28px;
@@ -46,6 +50,10 @@ a:hover {
 }
 
 @media (max-width: 480px) {
+
+    header{
+        height: 60px;
+    }
     
     .name {
         font-size: 24px;
