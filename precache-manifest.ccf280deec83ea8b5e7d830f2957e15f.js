@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "6bc6aaf8357842cc53296d78c1538caa",
+    "revision": "d8893f5518c8c982a082540beb5d3cb5",
     "url": "/study-time-planner/index.html"
   },
   {
-    "revision": "83bf0612b89b9ac0a53b",
+    "revision": "bc3df0c78aaa39d152cf",
     "url": "/study-time-planner/static/css/main.556156ed.chunk.css"
   },
   {
-    "revision": "154e4339196997fb53bc",
-    "url": "/study-time-planner/static/js/2.404e8c3e.chunk.js"
+    "revision": "487740a901da0e79dff5",
+    "url": "/study-time-planner/static/js/2.8f2cf8df.chunk.js"
   },
   {
     "revision": "62c1645b53df7f873fca458c71c36e8c",
-    "url": "/study-time-planner/static/js/2.404e8c3e.chunk.js.LICENSE.txt"
+    "url": "/study-time-planner/static/js/2.8f2cf8df.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "83bf0612b89b9ac0a53b",
-    "url": "/study-time-planner/static/js/main.0c674acf.chunk.js"
+    "revision": "bc3df0c78aaa39d152cf",
+    "url": "/study-time-planner/static/js/main.5d07fdf7.chunk.js"
   },
   {
     "revision": "62e9add1d6414fc3fcc3",

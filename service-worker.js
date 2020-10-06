@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/study-time-planner/precache-manifest.8df5c8601867b35230547145f76fe07a.js"
+  "/study-time-planner/precache-manifest.ccf280deec83ea8b5e7d830f2957e15f.js"
 );
 
 self.addEventListener('message', (event) => {
