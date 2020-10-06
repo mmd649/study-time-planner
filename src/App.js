@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Navbar from './components/navbar';
 import Timer from './components/timer'
@@ -8,7 +8,7 @@ import About from './components/about'
 
 function App() {
   return (
-    <Router>
+    <Router basename='/'>
       <div>
         <Navbar />
         <Switch>
